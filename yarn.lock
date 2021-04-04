@@ -5245,6 +5245,18 @@ react-native-gesture-handler@~1.8.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-interactable@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-interactable/-/react-native-interactable-2.0.1.tgz#80a4608c4b6f19489b629926306afd980c73a309"
+  integrity sha512-b5Mej8JnW9+q/hf+6bxWsKIX4E1rjILBgPnyYFIaEhJZGrZeu5jxENvw3+Q7t43ARp1wJIZZGfilVoFmwtgOdw==
+
+react-native-reanimated@~1.13.0:
+  version "1.13.3"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.3.tgz#fb0e1d582c8866015140f2159e147ffe6e798a3a"
+  integrity sha512-i714H24dv6ncpFO7/SZ0PfAMbvjgVbF8Ow2NPtowoZAz8osS54DmTMrkgJ9Za+uEku/s0AEaxqiXG2Xgntvv2g==
+  dependencies:
+    fbjs "^1.0.0"
+
 react-native-safe-area-context@3.1.9:
   version "3.1.9"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.1.9.tgz#48864ea976b0fa57142a2cc523e1fd3314e7247e"
