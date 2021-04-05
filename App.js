@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import {PanGestureHandler, State} from "react-native-gesture-handler";
 import Animated from "react-native-reanimated";
+import { AntDesign } from '@expo/vector-icons'; 
 
 const {width, height} = Dimensions.get("screen");
 const { event, Value, cond, eq, add, set, sub} = Animated;
@@ -28,31 +29,39 @@ export default class App extends React.Component{
       }
     ]);
 
-    // dragX = cond( eq(this.state, State.ACTIVE), add(this.beginX, this.translateX), set(this.beginX) );
-    // dragY = cond( eq(this.state, State.ACTIVE), add(this.beginY, this.translateY), set(this.beginY) );
     transX = cond(
       eq(this.gestureState, State.ACTIVE),
       add(this.offsetX, this.dragX),
-      set(this.offsetX, add(this.offsetX, this.dragX))
+      set(this.offsetX, this.offsetX)
     );
 
     transY = cond(
       eq(this.gestureState, State.ACTIVE),
       add(this.offsetY, this.dragY),
-      set(this.offsetY, add(this.offsetY, this.dragY))
+      set(this.offsetY, this.offsetY)
+    );
+
+    setOpacity = cond(eq(this.gestureState, State.BEGAN),
+    0.1,
+    1
     );
     
 
 render(){
 
   return (
-    // <View style={styles.container}>
+    <View>
+
+    <Animated.Text style={[styles.message, { opacity: this.setOpacity}]}>
+            <p>This is a cube drag it around</p>
+            <AntDesign name="arrowdown" size={36} color="gray" />
+          </Animated.Text>
+
         <PanGestureHandler maxPointers={1} onGestureEvent={this.onGestureEvent} onHandlerStateChange={this.onGestureEvent}>
            <Animated.View style={[styles.square, {transform: [{ translateX: this.transX}, { translateY: this.transY} ] }]} />
-
         </PanGestureHandler>
-        // <StatusBar style="auto" />
-    // </View>
+
+    </View>
     );  
   }
 
@@ -64,6 +73,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  message: {
+    fontSize: 30,
+    textAlign: "center",
+    color: "gray",
+    marginTop: 200,
+    marginBottom: -350,
   },
 
   square: {
